@@ -1,12 +1,11 @@
 class ImagesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!
 
 
   def index
-    @images = Image.all
     @image = Image.new
+    @images = Image.where(owner_id: current_user.id)
     @user = current_user.id
-    # @images = Image.where(owner_id: @user.id)
   end
 
   def new
