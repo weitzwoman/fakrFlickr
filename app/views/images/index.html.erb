@@ -4,6 +4,6 @@ HEY
 
 <% @images.each do |image| %>
   <%= link_to image_tag(image.paperclip), user_image_path(@user, image) %>
-  <% end %>
+<% end %>
 
 <%= render 'form' %>

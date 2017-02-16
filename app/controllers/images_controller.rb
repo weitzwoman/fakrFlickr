@@ -22,7 +22,30 @@ class ImagesController < ApplicationController
     end
   end
 
-  private
+  def show
+    @image = Image.find(params[:id])
+  end
+
+  def edit
+    @image = Image.find(params[:id])
+  end
+
+  def update
+    @image = Image.find(params[:id])
+    if @image.update(image_params)
+      render :back
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    redirect_to user_images_path
+  end
+
+private
   def image_params
     params.require(:image).permit(:paperclip)
   end

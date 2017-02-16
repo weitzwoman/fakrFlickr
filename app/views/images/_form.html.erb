@@ -1,4 +1,4 @@
-
+<%= render "layouts/errors", :object => @image %>
 
 <%= form_for @image, url: images_path, html: { multipart: true } do |form| %>
   <%= form.file_field :paperclip %>
