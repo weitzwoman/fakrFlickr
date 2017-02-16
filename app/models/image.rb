@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
 
   has_many :tags
   has_many :users, through: :tags
+  acts_as_votable
 
   validates :owner_id, :presence => true
 

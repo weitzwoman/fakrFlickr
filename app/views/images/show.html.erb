@@ -3,17 +3,24 @@
 <%= image_tag @image.paperclip %>
 <br>
 
+<%= link_to like_user_image_path(@image), method: :put do %>
+  <button class="btn">Add Favorite Vote</button>
+  <h5>Total Votes: <%= @image.get_upvotes.size %></h5>
+<% end %>
+
 <h5>Users Tagged in Photo: </h5>
 <% @image.users.each do |user| %>
   <%= user.email %>
 <% end %>
 <br>
+
 <h4>Tag Friends with Profile Accounts</h4>
 <%= simple_form_for(@image) do |f| %>
   <%= f.association :users, collection: User.all, label_method: :email,  as: :check_boxes %>
   <%= f.button :submit %>
 <% end %>
 <br>
+
 <% if user_signed_in? %>
   <% if current_user.id == @image.owner_id %>
     <p><%= link_to "Edit", edit_user_image_path(@user, @image) %></p>

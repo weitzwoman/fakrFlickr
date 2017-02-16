@@ -47,6 +47,12 @@ class ImagesController < ApplicationController
     redirect_to user_images_path
   end
 
+  def upvote
+    @image = Image.find(params[:id])
+    @image.upvote_by current_user
+    redirect_to :back
+  end
+
 private
   def image_params
     params.require(:image).permit(:paperclip)
