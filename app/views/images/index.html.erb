@@ -3,7 +3,7 @@ HEY
 <h2>  Personal Photo Gallery</h2>
 
 <% @images.each do |image| %>
-  <%= link_to "this is a photo", user_image_path(@user, image) %><br>
-<% end %>
+  <%= link_to image_tag(image.paperclip), user_image_path(@user, image) %>
+  <% end %>
 
 <%= render 'form' %>
