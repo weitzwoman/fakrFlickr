@@ -1,21 +1,25 @@
 <h1>Image Page</h1>
 
 <%= image_tag @image.paperclip %>
+<br>
 
+<h5>Users Tagged in Photo: </h5>
 <% @image.users.each do |user| %>
   <%= user.email %>
 <% end %>
-
+<br>
+<h4>Tag Friends with Profile Accounts</h4>
+<%= simple_form_for(@image) do |f| %>
+  <%= f.association :users, collection: User.all, label_method: :email,  as: :check_boxes %>
+  <%= f.button :submit %>
+<% end %>
+<br>
 <% if user_signed_in? %>
   <% if current_user.id == @image.owner_id %>
-      <h4>Tag Friends with Profile Accounts</h4>
-      <%= simple_form_for(@image) do |f| %>
-        <%= f.association :users, collection: User.all, label_method: :email,  as: :check_boxes %>
-        <%= f.button :submit %>
-      <% end %>
-
-    <br>
     <p><%= link_to "Edit", edit_user_image_path(@user, @image) %></p>
     <p><%= link_to "Delete Image", user_image_path(@user, @image), :data => {:confirm => "REALLY???", :method => "delete"} %></p>
   <% end %>
 <% end %>
+
+<%= link_to "View All Photos", root_path %><br>
+<%= link_to "View My Photos", user_images_path(@user) %>

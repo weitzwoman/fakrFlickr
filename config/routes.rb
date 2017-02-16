@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users, :only => [:show] do
     resources :tags
+  
   end
   resources :images do
 

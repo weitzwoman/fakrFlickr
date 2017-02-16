@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_user!
 
-
   def index
     @image = Image.new
     @images = Image.where(owner_id: current_user.id)
@@ -22,10 +21,6 @@ class ImagesController < ApplicationController
   end
 
   def show
-    # @useremail = []
-    # User.all.each do |u|
-    #   @useremail.push(u.email)
-    # end
     @user = current_user.id
     @image = Image.find(params[:id])
   end
@@ -39,7 +34,7 @@ class ImagesController < ApplicationController
     @user = current_user.id
     @image = Image.find(params[:id])
     if @image.update(user_ids: tag_params[:user_ids])
-      redirect_to user_images_path(@user)
+      redirect_to :back
     else
       render :edit
     end
