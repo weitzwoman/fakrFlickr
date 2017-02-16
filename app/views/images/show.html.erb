@@ -10,7 +10,7 @@
   <% if current_user.id == @image.owner_id %>
       <h4>Tag Friends with Profile Accounts</h4>
       <%= simple_form_for(@image) do |f| %>
-        <%= f.association :users, collection: @useremail, as: :check_boxes %>
+        <%= f.association :users, collection: User.all, label_method: :email,  as: :check_boxes %>
         <%= f.button :submit %>
       <% end %>
 

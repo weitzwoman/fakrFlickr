@@ -22,10 +22,10 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @useremail = []
-    User.all.each do |u|
-      @useremail.push(u.email)
-    end
+    # @useremail = []
+    # User.all.each do |u|
+    #   @useremail.push(u.email)
+    # end
     @user = current_user.id
     @image = Image.find(params[:id])
   end
@@ -58,6 +58,6 @@ private
   end
 
   def tag_params
-    params.require(:image).permit(:user_ids)
+    params.require(:image).permit({user_ids: []})
   end
 end
