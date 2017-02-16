@@ -1,9 +1,8 @@
-HEY
-
-<h2>  Personal Photo Gallery</h2>
+<h2>Personal Photo Gallery</h2>
+<%= link_to "Add New Image", new_user_image_path(@user) %>
+<br>
+<br>
 
 <% @images.each do |image| %>
   <%= link_to image_tag(image.paperclip), user_image_path(@user, image) %>
 <% end %>
-
-<%= render 'form' %>

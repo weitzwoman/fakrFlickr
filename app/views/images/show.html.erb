@@ -2,7 +2,7 @@
 
 <%= image_tag @image.paperclip %>
 
-<p><%= link_to "Edit", edit_user_image_path(@image, current_user.id) %></p>
-<p>  <%= link_to "Delete Image", user_image_path(@image, current_user.id), :data => {:confirm => "REALLY???", :method => "delete"} %>
+<p><%= link_to "Edit", edit_user_image_path(@user, @image) %></p>
+<p>  <%= link_to "Delete Image", user_image_path(@user, @image), :data => {:confirm => "REALLY???", :method => "delete"} %>
 
 </p>

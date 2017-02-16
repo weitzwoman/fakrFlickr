@@ -23,14 +23,17 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @user = current_user.id
     @image = Image.find(params[:id])
   end
 
   def edit
+    @user = current_user.id
     @image = Image.find(params[:id])
   end
 
   def update
+    @user = current_user.id
     @image = Image.find(params[:id])
     if @image.update(image_params)
       render :back
@@ -40,6 +43,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
+    @user = current_user.id
     @image = Image.find(params[:id])
     @image.destroy
     redirect_to user_images_path
