@@ -22,6 +22,10 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @useremail = []
+    User.all.each do |u|
+      @useremail.push(u.email)
+    end
     @user = current_user.id
     @image = Image.find(params[:id])
   end
@@ -34,8 +38,8 @@ class ImagesController < ApplicationController
   def update
     @user = current_user.id
     @image = Image.find(params[:id])
-    if @image.update(image_params)
-      render :back
+    if @image.update(user_ids: tag_params[:user_ids])
+      redirect_to user_images_path(@user)
     else
       render :edit
     end
@@ -51,5 +55,9 @@ class ImagesController < ApplicationController
 private
   def image_params
     params.require(:image).permit(:paperclip)
+  end
+
+  def tag_params
+    params.require(:image).permit(:user_ids)
   end
 end
