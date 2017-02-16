@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215212843) do
+ActiveRecord::Schema.define(version: 20170215234707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.string  "image_source"
-    t.integer "owner_id"
+    t.string   "image_source"
+    t.integer  "owner_id"
+    t.string   "paperclip_file_name"
+    t.string   "paperclip_content_type"
+    t.integer  "paperclip_file_size"
+    t.datetime "paperclip_updated_at"
   end
 
   create_table "tags", force: :cascade do |t|

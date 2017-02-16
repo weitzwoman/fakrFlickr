@@ -1,1 +1,6 @@
 <h1>welcome to fakrFlickr</h1>
+<% @images.each do |image| %>
+  <%= link_to images_path(image.image_source) %>
+<% end %>
+
+<%= link_to "See IMAGE PATH", images_path  %>
