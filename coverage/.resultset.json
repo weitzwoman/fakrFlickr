@@ -18,6 +18,21 @@
         1,
         1,
         null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/Guest/Desktop/fakrFlickr/spec/rails_helper.rb": [
@@ -1056,6 +1071,11 @@
         1,
         1,
         null,
+        null,
+        1,
+        2,
+        1,
+        null,
         null
       ],
       "/Users/Guest/Desktop/fakrFlickr/spec/support/factory_girl.rb": [
@@ -1097,6 +1117,6 @@
         null
       ]
     },
-    "timestamp": 1487290077
+    "timestamp": 1487290835
   }
 }
