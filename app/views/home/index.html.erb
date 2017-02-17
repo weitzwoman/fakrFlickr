@@ -1,5 +1,7 @@
 <h1>welcome to fakrFlickr</h1>
-<%= link_to "Personal Photo Gallery", user_images_path(@user, @images) %>
+<% if user_signed_in? %>
+  <%= link_to "Personal Photo Gallery", user_images_path(@user, @images) %>
+<% end %>
 <br>
 <% @images.each do |image| %>
   <%= link_to image_tag(image.paperclip), user_image_path(image.owner_id, image) %>

@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 describe 'upload an image' do
-  it 'uploads an avatar image selected by the user' do
-    user = User.create(:email => "person@person.com", :password => "password", :password_confirmation => "password")
-    visit edit_user_registration_path(user)
-    click_on "Choose File"
-    page.attach_file("Smallwater", 'spec/fixtures/images/smallwater.jpg')
-    fill_in "Current Password", :with => "password"
-    click_button 'Update'
-    expect(page).to have_content "Smallwater"
+  it 'uploads an image selected by the user' do
+    visit '/'
+    click_on "Sign Up"
+    fill_in "user[email]", :with => 'people@people.com'
+    fill_in "user[password]", :with => 'password'
+    fill_in "user[password_confirmation]", :with => 'password'
+    click_on "Sign up"
+    click_on "Personal Photo Gallery"
+    click_on "Add New Image"
+    page.attach_file("New Image", 'spec/fixtures/images/smallwater.jpg')
+    click_on "Create Image"
+    expect(page).to have_content("Personal Photo Gallery")
   end
 end

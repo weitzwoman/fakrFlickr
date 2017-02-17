@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
     @images = Image.all
-    @user = current_user.id
+    if current_user
+      @user = current_user.id
+    end
   end
 end
